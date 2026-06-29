@@ -14,6 +14,12 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        echo 'Jenkins pipeline is working 🚀'
+      }
+    }
+
     stage('Build Backend Image') {
       steps {
         sh 'docker build -t backend ./backend'

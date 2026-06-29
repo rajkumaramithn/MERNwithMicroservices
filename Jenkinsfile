@@ -35,8 +35,11 @@ pipeline {
     stage('Login to ECR') {
   steps {
     withCredentials([
-      string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
-      string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
+      usernamePassword(
+        credentialsId: 'mern-stack-creds-raj',
+        usernameVariable: 'AWS_ACCESS_KEY_ID',
+        passwordVariable: 'AWS_SECRET_ACCESS_KEY'
+      )
     ]) {
       sh '''
         aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
